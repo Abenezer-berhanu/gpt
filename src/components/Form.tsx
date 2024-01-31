@@ -29,6 +29,7 @@ function Form() {
       console.log(error);
     }
   };
+
   return (
     <div className="flex flex-col justify-between gap-5 h-full py-4 w-full scale-90">
       <div className="w-[90%] min-h-[400px] flex flex-col gap-3 mx-auto py-10 items-center overflow-y-scroll no-scrollbar h-full max-h-[600px]">
@@ -54,27 +55,6 @@ function Form() {
         ))}
       </div>
       {loading && <Spinner />}
-      <form
-        onSubmit={handleSubmit}
-        className="flex mx-5 gap-4 h-16 mt-auto"
-        ref={formRef}
-      >
-        <textarea
-          cols={5}
-          rows={1}
-          name="prompt"
-          onChange={(e: any) => setPrompt(e.target.value)}
-          className="break-words flex-1 px-10 py-2 border border-gray-300 outline-none rounded-md focus:outline-none h-full focus:ring-1 focus:ring-blue-200 max-w-[1000px] rounded-l-full"
-          placeholder="Enter something..."
-        />
-        <button
-          type="submit"
-          typeof="submit"
-          className="px-4 w-[300px] text-white bg-blue-500 rounded-sm  hover:bg-blue-600 focus:outline-none h-full"
-        >
-          Submit
-        </button>
-      </form>
       <form
         onSubmit={handleSubmit}
         className="flex mx-5 gap-4 h-16 mt-auto"
