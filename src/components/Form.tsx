@@ -3,6 +3,7 @@ import { useRef } from "react";
 
 import { askAiQuestion } from "@/actions/askAi";
 import { useState } from "react";
+import Spinner from "./Spinner";
 
 function Form() {
   const formRef = useRef(null);
@@ -14,6 +15,7 @@ function Form() {
     e.preventDefault();
     try {
       if (!prompt) return;
+      setQuestions((prev: string[]) => [...prev, prompt]);
       setLoading(true);
       const result: any = await askAiQuestion(prompt);
       //@ts-ignore
@@ -27,14 +29,15 @@ function Form() {
   };
   return (
     <div className="flex flex-col justify-between gap-5 h-full py-4 w-full">
-      {loading && <div>loading.. lore.</div>}
       <div className="w-[90%] min-h-[500px] flex flex-col gap-3 mx-auto border border-black/10 py-10 items-center overflow-y-scroll no-scrollbar h-full max-h-[600px]">
         {messages.map((e: any, index: number) => (
           <div
             key={index}
-            className="w-full max-w-[1200px] text-black/90 bg-gradient-to-br from-blue-100 to-red-100 border border-slate-300 shadow-md shadow-blue-300 rounded-md py-5 "
+            className="w-full flex flex-col gap-4 max-w-[1200px] text-black/90 bg-gradient-to-br from-blue-100 to-red-100 border border-slate-300 shadow-md shadow-blue-300 rounded-md py-5 "
           >
-            <p className=" mr-10 ml-auto w-fit bg-green-950 rounded-full py-1 px-3 text-white">{questions[index]}</p>
+            <p className=" mr-10 ml-auto w-fit bg-gradient-to-r from-green-900 to-green-950 rounded-full py-2 px-3 text-white">
+              {questions[index]}
+            </p>
             <p className="font-semibold indent-3 w-[90%] mx-auto">
               {" "}
               {"=>"} {e}
@@ -42,6 +45,7 @@ function Form() {
           </div>
         ))}
       </div>
+      {loading && <Spinner />}
       <form
         onSubmit={handleSubmit}
         className="flex mx-5 gap-4 h-16"
