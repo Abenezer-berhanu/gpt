@@ -13,7 +13,7 @@ function Header() {
           className="w-16 h-16 object-cover rounded-full"
         />
       </div>
-      <p className="text-lg font-semibold tracking-wider">
+      <p className="text-lg font-semibold tracking-wider text-center">
         Your everyday AI companion
       </p>
     </div>

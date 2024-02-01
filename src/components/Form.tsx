@@ -57,7 +57,7 @@ function Form() {
       {loading && <Spinner />}
       <form
         onSubmit={handleSubmit}
-        className="flex mx-5 gap-4 h-16 mt-auto"
+        className="grid md:grid-cols-5 gap-4 md:h-16 mt-auto"
         ref={formRef}
       >
         <textarea
@@ -65,13 +65,13 @@ function Form() {
           rows={1}
           name="prompt"
           onChange={(e: any) => setPrompt(e.target.value)}
-          className="break-words flex-1 px-10 py-2 border border-gray-300 outline-none rounded-md focus:outline-none h-full focus:ring-1 focus:ring-blue-200 max-w-[1000px] rounded-l-full"
+          className="break-words md:col-span-4 px-10 py-2 border border-gray-300 outline-none rounded-md focus:outline-none h-full focus:ring-1 focus:ring-blue-200 max-w-[1000px] rounded-l-full"
           placeholder="Enter something..."
         />
         <button
           type="submit"
           typeof="submit"
-          className="px-4 w-[300px] text-white bg-blue-500 rounded-sm  hover:bg-blue-600 focus:outline-none h-full"
+          className=" text-white md:col-span-1 bg-blue-500 rounded-sm hover:bg-blue-600 focus:outline-none max-md:h-10 h-full"
         >
           Submit
         </button>
